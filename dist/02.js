@@ -23,19 +23,19 @@ for (const line of lines) {
                 if (Number(cubes[0]) > 12) {
                     // possibleGameIds.push(id);
                     possible = false;
-                    break;
                 }
+                break;
             case 'green':
                 if (Number(cubes[0]) > 13) {
                     // possibleGameIds.push(id);
                     possible = false;
-                    break;
                 }
+                break;
             case 'blue':
                 if (Number(cubes[0]) > 14) {
                     possible = false;
-                    break;
                 }
+                break;
         }
         if (possible === false)
             break;
@@ -46,3 +46,42 @@ for (const line of lines) {
 // console.log(possibleGameIds);
 const sumId = possibleGameIds.reduce((sum, cur) => sum + cur);
 console.log('Day 2, Part 1: ' + sumId);
+// Part 2:
+// Smallest number of cubes of each color in each game
+// Power of minimum set of cubes -> numbers of cubes multiplied together
+// Answer: Sum of the power of the sets
+const powersOfSets = [];
+for (const line of lines) {
+    const game = line.split(/[:;,]/);
+    let minR = 1;
+    let minG = 1;
+    let minB = 1;
+    for (let i = 1; i < game.length; i++) {
+        const cubes = game[i].trim().split(' ');
+        // console.log(cubes);
+        const numCubes = Number(cubes[0]);
+        switch (cubes[1]) {
+            case 'red':
+                if (numCubes > minR) {
+                    minR = numCubes;
+                }
+                break;
+            case 'green':
+                if (numCubes > minG) {
+                    minG = numCubes;
+                }
+                break;
+            case 'blue':
+                if (numCubes > minB) {
+                    minB = numCubes;
+                }
+                break;
+        }
+    }
+    // console.log(minR, minG, minB);
+    const power = minR * minG * minB;
+    // console.log(power);
+    powersOfSets.push(power);
+}
+const sumPower = powersOfSets.reduce((sum, cur) => sum + cur);
+console.log('Day 2, Part 2: ' + sumPower);
