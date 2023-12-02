@@ -1,4 +1,6 @@
 export { }
+// Day 1: Trebuchet?!
+
 // Part 1
 
 const test = `1abc2
@@ -25,7 +27,7 @@ for (const line of lines) {
     const value = digits[0] + digits.at(-1);
     sum += Number(value);
 }
-console.log('Part 1: ' + sum);
+console.log('Day 1, Part 1: ' + sum);
 
 // find digits, find first and last digit of line and put them together (as string)
 // get sum of numbers
@@ -77,4 +79,4 @@ for (const line of lines2) {
     const value = digits[0] + digits.at(-1);
     sum2 += Number(value);
 }
-console.log("Part 2: " + sum2);
+console.log("Day 1, Part 2: " + sum2);
